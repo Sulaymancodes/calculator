@@ -7,7 +7,8 @@ const deleteBtn = document.querySelector('.del');
 
 let firstValue = 0;
 let secondValue = 0;
-let operator = 0;
+let operator = '';
+let isFirstInput = true;
 
 function add(firstValue,secondValue){
     return calculatorScreen.textContent= firstValue + secondValue;
@@ -41,20 +42,19 @@ function operate(firstValue,secondValue,operator){
 buttons.forEach(function(button){
     button.addEventListener('click', function(){
         let btnValue = button.value;
-        if(firstValue !== 0 && secondValue !== 0){
-            calculatorScreen.textContent = '';
-            firstValue = 0;
-            secondValue = 0;
-        }
+        
         if (btnValue === '.' && calculatorScreen.textContent.includes('.')) {
             return; // Exit the function early if "." is already present
         }
         if(calculatorScreen.textContent === '0'){
             calculatorScreen.textContent = btnValue
         }
-        else{
-            calculatorScreen.textContent += btnValue;
-        }
+        if (isFirstInput) {
+            calculatorScreen.textContent = '';
+            isFirstInput = false; 
+        } 
+        calculatorScreen.textContent += btnValue;
+        
     })
 })
 
@@ -63,12 +63,15 @@ operatorBtns.forEach(function(opeBtn){
         operator = opeBtn.value;
         firstValue = Number(calculatorScreen.textContent)
         calculatorScreen.textContent = '';
+        isFirstInput = true;
+
     })
 })
 
 equalBtn.addEventListener('click', () =>{
     secondValue = Number(calculatorScreen.textContent);
     operate(firstValue,secondValue,operator); 
+    isFirstInput = true;
     
 });
 
@@ -81,7 +84,7 @@ clearBtn.addEventListener('click',() => {
 deleteBtn.addEventListener('click',() =>{
     let calValue = calculatorScreen.textContent;
     if(calValue === '0'){
-        calValue = '0'
+        calValue = '0';
     }
     else{
         let newCalValue = calValue.slice(0,-1)

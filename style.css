@@ -13,13 +13,16 @@ body{
     align-items: center;
     flex-direction: column;
 }
-.cal-screen{
+.screen{
     border: none;
     width: 22rem;
-    padding: 2em;
+    padding: .5em;
     font-size: 1.2em;
     background-color: aliceblue;
     text-align: right;
+}
+.cal-screen {
+    min-height: 2em; 
 }
 .ac{
     background-color: #cb382d;
@@ -39,7 +42,9 @@ body{
     width: 10.9rem;
     padding: 1em 0;
 }
-.btns{
+.btns,
+.operator-btn,
+.equal-btn{
     border: none;
     background-color: #D6CBC1;
     margin-top: 8px;
@@ -47,10 +52,23 @@ body{
     padding: 2em 0;
     font-size: 1em;
 }
+.operator-btn{
+    background-color: #7c532f;
+    color: aliceblue;
+}
 .equal-btn{
     background-color: #d88c44;
+}
+.equal-btn:hover{
+    background-color: #ed7f18;
 }
 
 .btns:hover{
     background-color: #a9927c; 
+}
+.operator-btn:hover{
+    background-color: #a9927c;
+}
+.footer-text{
+    text-align: center;
 }

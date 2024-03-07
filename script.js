@@ -78,7 +78,7 @@ equalBtn.addEventListener('click', () =>{
 clearBtn.addEventListener('click',() => {
     firstValue = 0;
     secondValue = 0;
-    calculatorScreen.textContent = '0';
+    calculatorScreen.textContent = '';
 })
 
 deleteBtn.addEventListener('click',() =>{
